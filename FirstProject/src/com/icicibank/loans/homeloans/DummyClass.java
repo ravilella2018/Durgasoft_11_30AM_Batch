@@ -6,6 +6,7 @@ public class DummyClass {
 		System.out.println("Hi");
 		 System.out.println("Hello");
 		 System.out.println("GE");
+		 System.out.println("Bye");
 	}
 
 }
