@@ -1,7 +1,6 @@
 package com.durgasoft.launching.chromebrowser;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -44,6 +43,7 @@ public class BasePage
 		{
 			driver=new EdgeDriver();
 		}
+		driver.manage().window().maximize();
 	}
 	
 	
