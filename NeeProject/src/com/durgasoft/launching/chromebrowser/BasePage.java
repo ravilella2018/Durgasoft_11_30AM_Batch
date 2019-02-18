@@ -3,6 +3,7 @@ package com.durgasoft.launching.chromebrowser;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -25,21 +26,21 @@ public class BasePage
 		return value;
 	}
 	
-	public static void launch(String browser)
+	public static void launch(String browser) throws Exception
 	{
-		if(browser.equalsIgnoreCase("CHROME"))
+		if(loadData(browser).equalsIgnoreCase("CHROME"))
 		{
 			driver=new ChromeDriver();
 		}
-		else if(browser.equalsIgnoreCase("FIREFOX"))
+		else if(loadData(browser).equalsIgnoreCase("FIREFOX"))
 		{
 			driver=new FirefoxDriver();
 		}
-		else if(browser.equalsIgnoreCase("IE"))
+		else if(loadData(browser).equalsIgnoreCase("IE"))
 		{
 			driver=new InternetExplorerDriver();
 		}
-		else if(browser.equalsIgnoreCase("EDGE"))
+		else if(loadData(browser).equalsIgnoreCase("EDGE"))
 		{
 			driver=new EdgeDriver();
 		}
@@ -47,10 +48,20 @@ public class BasePage
 	}
 	
 	
-	public static void navigate(String url) 
+	public static void navigate(String url) throws Exception 
 	{
 		//driver.get(url);
-		driver.navigate().to(url);
+		driver.navigate().to(loadData(url));
+	}
+	
+	public static void type(String keyLocator, String dataKey) throws Exception 
+	{
+		driver.findElement(By.id(loadData(keyLocator))).sendKeys(loadData(dataKey));
+	}
+	
+	public static void click(String keyLocator) throws Exception 
+	{
+		driver.findElement(By.xpath(loadData(keyLocator))).click();
 	}
 	
 
