@@ -19,7 +19,7 @@ public class TC_003 extends BasePage
 		selectValue("amazondropdown_id",15);
 		log.info("Selected item : 15 index  by using Locator : - "+ loadData("amazondropdown_id"));
 		
-		type("amazonsearchtextbox_name","value");
+		type("amazonsearchtextbox_name1","value");
 		log.info("Entered the value : "+ loadData("value") + " By using locator :- " + loadData("amazonsearchtextbox_name"));
 		
 		click("amazonsearchbutton_xpath");

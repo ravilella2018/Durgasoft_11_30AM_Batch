@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.spi.Configurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,6 +69,11 @@ public class BasePage
 		getElement(keyLocator).sendKeys(loadData(dataKey));
 	}
 	
+	public static String getValue(String keyLocator, String key) throws Exception
+	{
+		return getElement(keyLocator).getAttribute(loadData(key));
+	}
+	
 	public static WebElement getElement(String keyLocator) throws Exception 
 	{
 		WebElement  element=null;
@@ -82,6 +86,8 @@ public class BasePage
 			element=driver.findElement(By.xpath(loadData(keyLocator)));
 		else if(keyLocator.endsWith("_link"))
 			element=driver.findElement(By.linkText(loadData(keyLocator)));
+		else
+			System.out.println("No locator is matched....");
 		return element;
 		
 	}
