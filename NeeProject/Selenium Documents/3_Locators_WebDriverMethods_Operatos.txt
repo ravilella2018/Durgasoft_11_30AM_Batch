@@ -148,4 +148,4 @@ WebDriver uses 13 methods to perform various activities on the webapplication
 
 12. isEnabled() --> This used to find if a webElement is enabled or disabled
 
-
+13. isExist()  --> 
