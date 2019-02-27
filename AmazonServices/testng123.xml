@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="smokeSuite">
+  <test thread-count="5" name="smokeTest">
+    <classes>
+      <class name="com.sales.AmazonServices.TC_004"/>
+      <class name="com.sales.AmazonServices.TC_005"/>
+      <class name="com.sales.AmazonServices.NewTest"/>
+    </classes>
+  </test> <!-- smokeTest -->
+</suite> <!-- smokeSuite -->

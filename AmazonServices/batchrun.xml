@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SmokeSuite" parallel="tests">
+
+ <groups>
+ 	<run>
+ 		<include name="Regression"></include>
+ 	</run>
+ </groups>
+
+  <test thread-count="5" name="ChromeTest">
+  <parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="com.sales.AmazonServices.TC_005"/>
+      <class name="com.sales.AmazonServices.LinksTesting1"/>
+      <class name="com.sales.AmazonServices.CheckBox1"/>
+      <class name="com.sales.AmazonServices.RadioButton1"/>
+    </classes>
+  </test> <!-- ChromeTest -->
+  
+  
+</suite> <!-- SmokeSuite -->
