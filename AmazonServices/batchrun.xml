@@ -12,9 +12,7 @@
   <parameter name="browser" value="chrome"></parameter>
     <classes>
       <class name="com.sales.AmazonServices.TC_005"/>
-      <class name="com.sales.AmazonServices.LinksTesting1"/>
-      <class name="com.sales.AmazonServices.CheckBox1"/>
-      <class name="com.sales.AmazonServices.RadioButton1"/>
+     
     </classes>
   </test> <!-- ChromeTest -->
   

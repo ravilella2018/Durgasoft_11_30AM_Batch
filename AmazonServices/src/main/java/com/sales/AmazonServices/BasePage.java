@@ -110,5 +110,11 @@ public class BasePage
 		driver.quit();
 	}
 	
+	public String verifyTitle() 
+	{
+		return driver.getTitle();
+		
+	}
+	
 
 }
