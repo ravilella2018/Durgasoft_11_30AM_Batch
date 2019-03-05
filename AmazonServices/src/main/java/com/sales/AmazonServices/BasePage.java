@@ -37,19 +37,19 @@ public class BasePage
 	
 	public static void launch(String browser) throws Exception
 	{
-		if(browser.equalsIgnoreCase("CHROME"))
+		if(loadData(browser).equalsIgnoreCase("CHROME"))
 		{
 			driver=new ChromeDriver();
 		}
-		else if(browser.equalsIgnoreCase("ff"))
+		else if(loadData(browser).equalsIgnoreCase("ff"))
 		{
 			driver=new FirefoxDriver();
 		}
-		else if(browser.equalsIgnoreCase("IE"))
+		else if(loadData(browser).equalsIgnoreCase("IE"))
 		{
 			driver=new InternetExplorerDriver();
 		}
-		else if(browser.equalsIgnoreCase("EDGE"))
+		else if(loadData(browser).equalsIgnoreCase("EDGE"))
 		{
 			driver=new EdgeDriver();
 		}
@@ -63,41 +63,41 @@ public class BasePage
 		driver.navigate().to(loadData(url));
 	}
 	
-	public static void type(String keyLocator, String dataKey) throws Exception 
+	public static void type(WebElement keyLocator, String dataKey) throws Exception 
 	{
 		//driver.findElement(By.id(loadData(keyLocator))).sendKeys(loadData(dataKey));
 		getElement(keyLocator).sendKeys(loadData(dataKey));
 	}
 	
-	public static String getValue(String keyLocator, String key) throws Exception
+	public static String getValue(WebElement keyLocator, String key) throws Exception
 	{
 		return getElement(keyLocator).getAttribute(loadData(key));
 	}
 	
-	public static WebElement getElement(String keyLocator) throws Exception 
+	public static WebElement getElement(WebElement keyLocator) throws Exception 
 	{
 		WebElement  element=null;
-		
-		if(keyLocator.endsWith("_id"))
-			element=driver.findElement(By.id(loadData(keyLocator)));
-		else if(keyLocator.endsWith("_name"))
-			element=driver.findElement(By.name(loadData(keyLocator)));
-		else if(keyLocator.endsWith("_xpath"))
-			element=driver.findElement(By.xpath(loadData(keyLocator)));
-		else if(keyLocator.endsWith("_link"))
-			element=driver.findElement(By.linkText(loadData(keyLocator)));
+		String loc = keyLocator.toString();
+		if(loc.endsWith("_id"))
+			element=driver.findElement(By.id(loc));
+		else if(loc.endsWith("_name"))
+			element=driver.findElement(By.name(loc));
+		else if(loc.endsWith("_xpath"))
+			element=driver.findElement(By.xpath(loc));
+		else if(loc.endsWith("_link"))
+			element=driver.findElement(By.linkText(loc));
 		else
 			System.out.println("No locator is matched....");
 		return element;
 		
 	}
 
-	public static void click(String keyLocator) throws Exception 
+	public static void click(WebElement keyLocator) throws Exception 
 	{
 		getElement(keyLocator).click();
 	}
 	
-	public static void selectValue(String keyLocator, int keyItem) throws Exception
+	public static void selectValue(WebElement keyLocator, int keyItem) throws Exception
 	{
 		//getElement(keyLocator).sendKeys(loadData(keyItem));
 		WebElement ele = getElement(keyLocator);
