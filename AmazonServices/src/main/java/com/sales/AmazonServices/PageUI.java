@@ -1,7 +1,5 @@
 package com.sales.AmazonServices;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,9 +24,9 @@ public class PageUI extends BasePage
 	@FindBy(id="id_gender2") public WebElement Title_gen2;
 	@FindBy(id="customer_firstname") public WebElement FirstName;
 	@FindBy(id="customer_lastname") public WebElement LastName;
-	@FindBy(id="days") public WebElement DOB_day_id;
-	@FindBy(id="months") public WebElement DOB_month_id;
-	@FindBy(id="years") public WebElement DOB_year_id;
+	@FindBy(id="days") public WebElement DOB_day;
+	@FindBy(id="months") public WebElement DOB_month;
+	@FindBy(id="years") public WebElement DOB_year;
 	@FindBy(id="firstname") public WebElement FirtName_address;
 	@FindBy(id="lastname") public WebElement LastName_address;
 	@FindBy(id="company") public WebElement Company;
@@ -70,20 +68,22 @@ public class PageUI extends BasePage
 	public void customerRegistration() throws Exception
 	{
 		signIn.click();
-		custEmail.sendKeys("qatest4584787@gmail.com");
+		custEmail.sendKeys(loadData("firstname")+loadData("lastname")+ranNumber()+loadData("domain"));
+		System.out.println(custEmail.getAttribute("value"));
 		Submit.click();
 		
 		//waitForElement(60, Title_gen1);
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
+		elementWait(Title_gen1, 200);
 		
 		Title_gen1.click();
 		FirstName.sendKeys("qa");
 		LastName.sendKeys("test");
 		customerPassword.sendKeys("password");	
 		
-		selectValue(DOB_day_id, 1);
-		selectValue(DOB_month_id, 1);
-		selectValue(DOB_year_id, 3);
+		selectValue(DOB_day, 1);
+		selectValue(DOB_month, 1);
+		selectValue(DOB_year, 3);
 		
 		Address_1.sendKeys("hyderabad");
 		City.sendKeys("hyderabad");
@@ -93,6 +93,8 @@ public class PageUI extends BasePage
 		Mobile_Phone.sendKeys("1234567890");
 		
 	}
+
+	
 
 	
 

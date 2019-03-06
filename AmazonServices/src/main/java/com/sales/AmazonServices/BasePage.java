@@ -2,6 +2,7 @@ package com.sales.AmazonServices;
 
 import java.io.FileInputStream;
 import java.util.Properties;
+import java.util.Random;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
@@ -11,7 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage 
 {
@@ -54,6 +57,7 @@ public class BasePage
 			driver=new EdgeDriver();
 		}
 		driver.manage().window().maximize();
+		//driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 	}
 	
 	
@@ -100,8 +104,8 @@ public class BasePage
 	public static void selectValue(WebElement keyLocator, int keyItem) throws Exception
 	{
 		//getElement(keyLocator).sendKeys(loadData(keyItem));
-		WebElement ele = getElement(keyLocator);
-		Select s=new Select(ele);
+		//WebElement ele = getElement(keyLocator);
+		Select s=new Select(keyLocator);
 		s.selectByIndex(keyItem);
 	}
 	
@@ -114,6 +118,19 @@ public class BasePage
 	{
 		return driver.getTitle();
 		
+	}
+	
+	public void elementWait(WebElement element,int timeInSeconds)
+	{
+		WebDriverWait wait=new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
+	public int ranNumber() 
+	{
+		Random r=new Random();
+		int rnum=r.nextInt(99999);
+		return rnum;
 	}
 	
 
